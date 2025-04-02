@@ -1,7 +1,10 @@
 package com.dsa.sample;
 
 
-public class HashMap {
+public class HashMap <T,M>{
+
+
+
 
 
     int defaultSize = 10;
@@ -20,7 +23,7 @@ public class HashMap {
     }
 
 
-    public void put(int key, int val) {
+    public void put(T key, M val) {
 
 
         int hashCode = hash(key);
@@ -50,14 +53,14 @@ public class HashMap {
         }
     }
 
-    public int get(int key) {
+    public M get(T key) {
         int hashCode = hash(key);
         int index = index(hashCode);
         Node value = table[index];
 
         if (value.key == (key)) {
 
-            return value.val;
+            return (M)value.val;
 
         } else {
 
@@ -69,7 +72,7 @@ public class HashMap {
 
             }
 
-            return current.val;
+            return (M)current.val;
 
 
         }
@@ -83,14 +86,14 @@ public class HashMap {
 
 
 
-class Node {
+class Node<T,M> {
 
-    int key;
-    int val;
+    T key;
+    M val;
     int hashCode;
     Node next;
 
-    public Node(int key, int val, int hashCode) {
+    public Node(T key, M val, int hashCode) {
         this.key = key;
         this.val = val;
         this.hashCode = hashCode;
